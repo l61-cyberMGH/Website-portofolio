@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio web</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+ </head>
+<body class="bg-[#f8f7f1] text-gray-900 font-sans">
+
+    <header class="sticky top-0 z-50 w-full">
+        <div class="max-w-7xl mx-auto px-8">
+             <nav class="flex justify-center items-center h-20 bg-white/80 backdrop-blur-md rounded-full mt-4 shadow-sm">
+                <div id="nav-links" class="flex items-center space-x-2">
+                    <a href="#about" class="nav-link px-5 py-2 text-sm font-medium rounded-full transition-colors">About</a>
+                    <a href="#specialties" class="nav-link px-5 py-2 text-sm font-medium rounded-full transition-colors">Specialties</a>
+                    <a href="#projects" class="nav-link px-5 py-2 text-sm font-medium rounded-full transition-colors">Projects</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-content">
+        <section id="about" class="page-section py-20 sm:py-24">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-20 items-center">
+                    
+                    <div class="flex flex-col items-start text-left">
+                        <h1 class="text-6xl md:text-8xl font-black text-gray-900 leading-none mb-8">
+                            Hi, i'm Mikhael Aquila Yuliusputra<sup class="text-3xl md:text-4xl -top-8">&reg;</sup>
+                        </h1>
+                        <p class="text-lg text-gray-600 max-w-md mb-8">
+                           Student of Ignatius Global School Class 10.3, From Smp Xaverius Emmanuel Tanjung Enim
+                        </p>
+                    </div>
+
+                    <div class="relative w-full h-[450px] lg:h-full flex items-center justify-center">
+                        <div class="w-full max-w-sm">
+                            <img src="Mikhael.jpeg" alt="Portrait of the designer" class="w-full h-auto object-cover rounded-3xl shadow-2xl">
+                            
+                        </div>
+
+                  
+                          
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="specialties" class="page-section py-20 bg-[#f8f7f1]">
+            <div class="max-w-7xl mx-auto px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+                    <div>
+                       
+                        <h2 class="text-5xl font-bold mt-2 mb-4">My specialties</h2>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-8 rounded-2xl transition-colors group">
+                        <div class="flex justify-between items-center"><h3 class="text-xl font-semibold text-gray-900">Microsoft Word</h3><span class="transform transition-transform group-hover:rotate-[-45deg]">&#x2197;</span></div>
+                    </a>
+                    <a href="#" class="bg-gray-100 hover:bg-gray-200 p-8 rounded-2xl transition-colors group">
+                        <div class="flex justify-between items-center"><h3 class="text-xl font-semibold text-gray-900">Microsoft Excel</h3><span class="transform transition-transform group-hover:rotate-[-45deg]">&#x2197;</span></div>
+                    
+                    </a>
+                    
+                     <a href="mikhaelaquilayp@gmail.com" class="bg-gray-900 text-white p-8 rounded-2xl flex flex-col justify-between group">
+                       <div><div class="flex justify-end"><span class="text-orange-500 text-3xl transform transition-transform group-hover:rotate-[-45deg]">&#x2197;</span></div></div>
+                        <div><span class="text-sm text-gray-400">SAY HELLO!</span><h3 class="text-2xl font-semibold text-white mt-1">mikhaelaquilayp@gmail.com</h3></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="page-section py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-8">
+                <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">My Projects</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300"><img src="https://picsum.photos/seed/project1/400/300" alt="Project 1" class="w-full h-56 object-cover"><div class="p-6"><h3 class="text-xl font-bold mb-2">Portofolio Web</h3><p class="text-gray-600 mb-4">A portofolio web using basic html, basic javascript, basic tailwindcss .</p><a href="#" class="text-blue-600 font-semibold hover:underline">View Project</a></div></div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+
+    
+        
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const activeClass = 'bg-gray-900';
+            const activeTextColor = 'text-white';
+            const inactiveTextColor = 'text-gray-600';
+            const hoverTextColor = 'hover:text-gray-900';
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '-30% 0px -60% 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Remove active styles from all links
+                        navLinks.forEach(link => {
+                            link.classList.remove(activeClass, activeTextColor);
+                            link.classList.add(inactiveTextColor, hoverTextColor);
+                        });
+
+                        // Add active styles to the corresponding link
+                        const id = entry.target.getAttribute('id');
+                        const activeLink = document.querySelector(`.nav-link[href="#${id}"]`);
+                        
+                        if (activeLink) {
+                            activeLink.classList.add(activeClass, activeTextColor);
+                            activeLink.classList.remove(inactiveTextColor, hoverTextColor);
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            // Observe each section
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Set initial active state for the "About" section on page load
+             const aboutLink = document.querySelector('.nav-link[href="#about"]');
+             if(aboutLink){
+                aboutLink.classList.add(activeClass, activeTextColor);
+                aboutLink.classList.remove(inactiveTextColor, hoverTextColor);
+             }
+        });
+    </script>
+</body>
+</html>
